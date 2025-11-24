@@ -1,27 +1,361 @@
 <!doctype html>
 <html>
 <head>
-<title>Explanation Template</title>
+<title>Patient Screening Result Handout</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  line-height: 1.6;
+  padding: 20px;
+  max-width: 8.5in;
+  margin: 0 auto;
+}
+
+@media print {
+  body {
+    padding: 0;
+  }
+  .no-print {
+    display: none;
+  }
+}
+
+/* Header Section */
+.header {
+  background-color: #D32F2F;
+  color: #ffffff;
+  padding: 30px;
+  text-align: center;
+  margin-bottom: 30px;
+  border-radius: 5px;
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.header h2 {
+  font-size: 18px;
+  font-weight: normal;
+  margin-bottom: 15px;
+}
+
+.header .cta {
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #ffffff;
+  color: #D32F2F;
+  padding: 12px 25px;
+  display: inline-block;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+/* Patient Info Section */
+.patient-info {
+  background-color: #f5f5f5;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-left: 5px solid #D32F2F;
+}
+
+.patient-info p {
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+.patient-info strong {
+  font-weight: bold;
+}
+
+/* Visual Evidence Section */
+.visual-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.visual-column {
+  text-align: center;
+}
+
+.visual-column img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border: 2px solid #e0e0e0;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.visual-column h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #D32F2F;
+}
+
+.visual-column p {
+  font-size: 14px;
+  text-align: left;
+  padding: 0 10px;
+}
+
+/* Why Act Now Section */
+.why-act-section {
+  background-color: #fff3cd;
+  padding: 25px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+}
+
+.why-act-section h2 {
+  font-size: 24px;
+  color: #D32F2F;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.why-act-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.why-act-item {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  border-left: 4px solid #D32F2F;
+}
+
+.why-act-item h3 {
+  font-size: 18px;
+  color: #D32F2F;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.why-act-item p {
+  font-size: 14px;
+}
+
+/* Financial Section */
+.financial-section {
+  background-color: #e8f5e9;
+  padding: 25px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  border: 2px solid #4caf50;
+}
+
+.financial-section h2 {
+  font-size: 22px;
+  color: #2e7d32;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.cost-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.cost-box {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.cost-box.acting {
+  border-left: 5px solid #4caf50;
+}
+
+.cost-box.waiting {
+  border-left: 5px solid #D32F2F;
+}
+
+.cost-box h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.cost-box.acting h3 {
+  color: #4caf50;
+}
+
+.cost-box.waiting h3 {
+  color: #D32F2F;
+}
+
+/* Next Steps Section */
+.next-steps {
+  background-color: #f5f5f5;
+  padding: 25px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+}
+
+.next-steps h2 {
+  font-size: 22px;
+  color: #D32F2F;
+  margin-bottom: 20px;
+}
+
+.next-steps ol {
+  margin-left: 25px;
+  font-size: 16px;
+}
+
+.next-steps li {
+  margin-bottom: 15px;
+  padding-left: 10px;
+}
+
+.next-steps strong {
+  font-weight: bold;
+  color: #D32F2F;
+}
+
+/* Physician's Note */
+.physician-note {
+  background-color: #e3f2fd;
+  padding: 25px;
+  border: 2px solid #1976d2;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.physician-note h2 {
+  font-size: 20px;
+  color: #1976d2;
+  margin-bottom: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.physician-note p {
+  font-size: 14px;
+  font-family: 'Courier New', monospace;
+  line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+  .visual-section,
+  .why-act-grid,
+  .cost-comparison {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
 </head>
 <body>
-<div class="w3-content w3-padding-large w3-margin-top" id="portfolio">
-  <!-- Contact -->
-  <div class="w3-light-grey w3-padding-large w3-padding-32 w3-margin-top" id="prediction">
-    <h3 class="w3-center">Diagnosis Report</h3>
-    <hr>
-    <p>Patient: PXX</p>
-    <p>Gender: GXX</p>
-    <p>Image</p>
-    <img src="IMAGE_FOR_DISPLAY.png" alt="Ocean" class="w3-image" width="1000" height="500">    
-    <p>Diagnosis: DXX</p>
-    <p>EXPLANATION</p>
 
-  </div>
-
-<!-- End page content -->
+<!-- Header Section -->
+<div class="header">
+  <h1>SCREENING RESULT: REFERRAL RECOMMENDED</h1>
+  <h2>Potential signs of Diabetic Retinopathy detected</h2>
+  <div class="cta">Please schedule a dilated eye exam within 2 weeks</div>
 </div>
+
+<!-- Patient Info (Original placeholders preserved) -->
+<div class="patient-info">
+  <p><strong>Patient:</strong> PXX</p>
+  <p><strong>Gender:</strong> GXX</p>
+  <p><strong>Diagnosis:</strong> DXX</p>
+  <p><strong>Screening Date:</strong> [DATE]</p>
+</div>
+
+<!-- Visual Evidence Section -->
+<div class="visual-section">
+  <div class="visual-column">
+    <h3>Healthy Retina Reference</h3>
+    <img src="0a38b552372d.png" alt="Healthy Retina Reference">
+    <p><strong>"Healthy Retina"</strong> - Clear vessels, no spots. Good vision with normal blood flow.</p>
+  </div>
+  
+  <div class="visual-column">
+    <h3>Your Screening Scan (AI Analysis)</h3>
+    <img src="IMAGE_FOR_DISPLAY.png" alt="Patient Screening Scan with Heatmap">
+    <p><strong>"Your Screening Scan"</strong> - The highlighted areas show potential micro-aneurysms (bleeding spots). These are early warning signs of damage.</p>
+    <p><em>EXPLANATION</em></p>
+  </div>
+</div>
+
+<!-- Why Act Now Section -->
+<div class="why-act-section">
+  <h2>Why Act Now?</h2>
+  <div class="why-act-grid">
+    <div class="why-act-item">
+      <h3>Save Your Driver's License</h3>
+      <p>Vision loss from diabetes is often <strong>irreversible</strong>. Once it's gone, you cannot drive, read, or live independently.</p>
+    </div>
+    
+    <div class="why-act-item">
+      <h3>It's Treatable</h3>
+      <p>Caught early, this can often be managed with medication or minor laser procedures. <strong>No major surgery is needed yet.</strong></p>
+    </div>
+    
+    <div class="why-act-item">
+      <h3>Silent Damage</h3>
+      <p>You may see fine now, but diabetes damages eyes <strong>silently</strong>. By the time your vision gets blurry, it might be too late to fix.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Financial Section -->
+<div class="financial-section">
+  <h2>The Cost of Waiting vs. Acting</h2>
+  <div class="cost-comparison">
+    <div class="cost-box acting">
+      <h3>Acting Now</h3>
+      <p>Most Health Insurance, Medicare, and Medicaid cover diabetic eye exams.</p>
+      <p><strong>Standard specialist copay: $20 - $50</strong></p>
+    </div>
+    
+    <div class="cost-box waiting">
+      <h3>Waiting</h3>
+      <p>If ignored, advanced treatment (injections/surgery) can cost <strong>thousands of dollars</strong> out-of-pocket and require monthly hospital visits.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Next Steps Section -->
+<div class="next-steps">
+  <h2>Next Steps</h2>
+  <ol>
+    <li><strong>Call an Eye Doctor:</strong> Search for an "Ophthalmologist" or "Retina Specialist" near you.</li>
+    <li><strong>Bring This Sheet:</strong> Show the doctor the "Physician's Note" below.</li>
+    <li><strong>Don't Wait:</strong> Make the appointment today. Early action saves your sight.</li>
+  </ol>
+</div>
+
+<!-- Physician's Note -->
+<div class="physician-note">
+  <h2>Physician's Note</h2>
+  <p>
+    <strong>To the attending Ophthalmologist:</strong><br><br>
+    This patient underwent a non-mydriatic fundus screening via an AI-assisted smartphone device. 
+    The system detected high-probability indicators of Referable Diabetic Retinopathy (Sensitivity: 97%). 
+    <br><br>
+    Please perform a comprehensive dilated eye exam to confirm diagnosis and determine treatment plan.
+  </p>
+</div>
+
 </body>
 </html>
