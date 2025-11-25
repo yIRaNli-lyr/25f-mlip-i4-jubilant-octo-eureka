@@ -338,6 +338,12 @@ class DRExplainer:
             # Remove "The Cost of Waiting vs. Acting" section for healthy patients
             financial_pattern = r'<!-- Financial Section -->.*?</div>\s*</div>\s*</div>'
             html_content = re.sub(financial_pattern, '', html_content, flags=re.DOTALL)
+            
+            # Replace image description for healthy patients
+            html_content = html_content.replace(
+                '<p><strong>"Your Screening Scan"</strong> - The highlighted areas show potential micro-aneurysms (bleeding spots). These are early warning signs of damage.</p>',
+                '<p><strong>"Your Screening Scan"</strong> - No abnormal areas detected. Retinal vessels appear clear and healthy.</p>'
+            )
         else:
             # Patient with disease - red background, white text (already default in template)
             pass
